@@ -41,16 +41,17 @@ express()
   .get('/db', async (req, res) => {
     pool.getConnection(function(err, conn) {
       if (err) throw err; // not connected!
-      var sql = "SELECT * FROM IEEE_Club_Members"
+      var sql = "SELECT * FROM IEEE_Club_Members";
       // Use the connection
       conn.query(sql, function (error, results, fields) {
-        console.log(results)
+        console.log(results);
         // When done with the connection, release it.
         conn.release();
 
       // Handle error after the release.
       if (error) throw error;
-
+        console.log(results);
+        res.send(results)
         // Don't use the connection here, it has been returned to the pool.
       });
     });
