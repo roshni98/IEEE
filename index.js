@@ -26,6 +26,17 @@ express()
     }))
   .use(express.json())      // to support JSON-encoded bodies
   .use(express.urlencoded()) // to support URL-encoded bodies
+  .all('*',function(req,res,next){
+    if (!req.get('Origin')) return next();
+
+    res.set('Access-Control-Allow-Origin','http://myapp.com');
+    res.set('Access-Control-Allow-Methods','GET,POST');
+    res.set('Access-Control-Allow-Headers','X-Requested-With,Content-Type');
+
+    if ('OPTIONS' == req.method) return res.send(200);
+
+    next();
+  })
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
@@ -57,6 +68,7 @@ express()
     });
   })
   .post('/new_subscriber', async (req, res) => {
+      res.header("Access-Control-Allow-Origin", "*");
       var netid = "'"+req.body.netid+"'";
       var fname = "'"+req.body.fname+"'";
       var lname = "'"+req.body.lname+"'";
