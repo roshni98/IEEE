@@ -84,16 +84,6 @@ express()
       var email = "'"+req.body.email+"'";
       var year = "'"+req.body.year+"'";
       var timestamp = new Date().getTime();
-
-      var subscriber = [{
-              'email': email,
-              'name': fname+' '+lname,
-              'fields':{'graduating_year':year,'netid':netid}
-      }];
-      console.log($campaign_id);
-      $ML_Subscribers.setId($campaign_id).addAll(subscriber,1,function (r){
-        console.log(r);
-      });
       
       console.log(netid)
       pool.getConnection(function(err, conn) {
