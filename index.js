@@ -110,7 +110,7 @@ express()
         console.log('HERE');
         console.log(r);
       });
-
+      res.send(202);
 
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
