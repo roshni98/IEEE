@@ -102,8 +102,8 @@ express()
       });
 
       var subscriber = [{
-              'email': email,
-              'name': fname,
+              'email': req.body.email,
+              'name': req.body.fname,
               'fields':{'graduating_year':year}
       }];
       console.log($campaign_id);
