@@ -104,7 +104,7 @@ express()
       var subscriber = [{
               'email': email,
               'name': fname,
-              'fields':{'graduating_year':year,'netid':netid}
+              'fields':{'graduating_year':year}
       }];
       console.log($campaign_id);
       $ML_Subscribers.setId($campaign_id).addAll(subscriber,1,function (r){
