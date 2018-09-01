@@ -109,8 +109,8 @@ express()
       console.log($campaign_id);
       $ML_Subscribers.setId($campaign_id).addAll(subscriber,1,function (r){
         console.log(r);
+        res.status(200).send('success');
       });
-      res.status(200).send('success');
 
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
