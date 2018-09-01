@@ -84,7 +84,6 @@ express()
       var email = "'"+req.body.email+"'";
       var year = "'"+req.body.year+"'";
       var timestamp = new Date().getTime();
-      
       console.log(netid)
       pool.getConnection(function(err, conn) {
         if (err) throw err; // not connected!
@@ -101,6 +100,17 @@ express()
           // Don't use the connection here, it has been returned to the pool.
         });
       });
+
+      var subscriber = [{
+              'email': email,
+              'name': fname+' '+lname,
+              'fields':{'graduating_year':year,'netid':netid}
+      }];
+      console.log($campaign_id);
+      $ML_Subscribers.setId($campaign_id).addAll(subscriber,1,function (r){
+        console.log(r);
+      });
+      res.status(200).send('success');
 
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
