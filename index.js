@@ -27,6 +27,8 @@ const PORT = process.env.PORT || 5000
 //   ssl: true
 // });
 
+
+
 express()
   .use(express.static(path.join(__dirname, 'public')))
   .use(bodyParser.json())       // to support JSON-encoded bodies
@@ -114,7 +116,3 @@ express()
 
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
-  
-  function myFunction() {
-      alert("I am an alert box!");
-  }
