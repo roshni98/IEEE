@@ -84,6 +84,17 @@ express()
       var email = "'"+req.body.email+"'";
       var year = "'"+req.body.year+"'";
       var timestamp = new Date().getTime();
+
+      var subscriber = [{
+              'email': email,
+              'name': fname+' '+lname,
+              'fields':{'graduating_year':year,'netid':netid}
+      }];
+      console.log($campaign_id);
+      $ML_Subscribers.setId($campaign_id).addAll(subscriber,1,function (r){
+        console.log(r);
+      });
+      
       console.log(netid)
       pool.getConnection(function(err, conn) {
         if (err) throw err; // not connected!
@@ -100,17 +111,6 @@ express()
           // Don't use the connection here, it has been returned to the pool.
         });
       });
-      var subscriber = [{
-              'email': email,
-              'name': fname+' '+lname,
-              'fields':{'graduating_year':year,'netid':netid}
-      }];
-      console.log($campaign_id);
-      $ML_Subscribers.setId($campaign_id).addAll(subscriber,1,function (r){
-        console.log('HERE');
-        console.log(r);
-      });
-      res.send(202);
 
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
