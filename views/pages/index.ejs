@@ -13,9 +13,11 @@
   Last name: <input type="text" name="lname" id="last" required><br>
   Email: <input type="text" name="emails" id="mail" required><br>
   Graduation Year: <input type="text" name="year" id="grad" required><br>
-
-    <input type="submit" onclick="myFunction()" value="Submit">
+<form id="myform" onsubmit="return handle_form_submission()">
+    <input type="submit"  name= "action" value="Submit" />
     <input type="submit" name="action" value="Unsubscribe" />
+
+</form>
 </div>
 
 
