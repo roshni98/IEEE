@@ -105,10 +105,12 @@ express()
               'name': fname+' '+lname,
               'fields':{'graduating_year':year,'netid':netid}
       }];
-      $ML_Subscribers.addAll(subscriber,1,function (r){
+      console.log(campaignId);
+      $ML_Subscribers.setId(campaignId).addAll(subscriber,1,function (r){
         console.log('HERE');
         console.log(r);
       });
+
 
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
