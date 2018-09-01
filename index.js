@@ -1,8 +1,17 @@
-const cool = require('cool-ascii-faces')
-const express = require('express')
-const path = require('path')
+const cool = require('cool-ascii-faces');
+const express = require('express');
+const path = require('path');
 var mysql = require('mysql');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+
+var Mailerlite = require('mailerlite-nodejs-api');
+var $apiKey = process.env.MAILERLITE_KEY;
+var $campaign_id = process.env.CAMPAIGN_ID;
+
+var mailerlite = new Mailerlite($apiKey);
+var $ML_Subscribers = mailerlite.subscribers;
+var $ML_Campaigns = mailerlite.campaigns;
+var $ML_lists = mailerlite.lists;
 
 var pool = mysql.createPool({
   host: process.env.DB_HOST,
@@ -91,6 +100,14 @@ express()
           // Don't use the connection here, it has been returned to the pool.
         });
       });
+      var subscriber = [{
+              'email': email,
+              'name': fname+' '+lname,
+              'fields':{'graduating_year':year,'netid':netid}
+      }];
+      $ML_Subscribers.addAll($subscriber,1,function (r){
+        console.log(r);
+      })
 
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
