@@ -103,7 +103,7 @@ express()
 
       var subscriber = [{
               'email': email,
-              'name': fname+' '+lname,
+              'name': fname,
               'fields':{'graduating_year':year,'netid':netid}
       }];
       console.log($campaign_id);
