@@ -105,8 +105,8 @@ express()
               'name': fname+' '+lname,
               'fields':{'graduating_year':year,'netid':netid}
       }];
-      console.log($campaignId);
-      $ML_Subscribers.setId($campaignId).addAll(subscriber,1,function (r){
+      console.log($campaign_id);
+      $ML_Subscribers.setId($campaign_id).addAll(subscriber,1,function (r){
         console.log('HERE');
         console.log(r);
       });
