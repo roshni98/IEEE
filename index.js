@@ -114,3 +114,7 @@ express()
 
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+  
+  function myFunction() {
+      alert("I am an alert box!");
+  }
