@@ -50,13 +50,13 @@ function valid(){
   return true;
 }
 function reset(){
-
+  console.log("clicked");
     netid.reset();
     fst.reset();
     lst.reset();
     email.reset();
     grads.reset();
-  
+
 
 }
 
