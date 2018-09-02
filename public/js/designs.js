@@ -7,42 +7,66 @@ var submitQuery = document.querySelector('input[type="submit"]');
 //var url = "http://localhost:5000"
  var url = "https://emails-ieee.herokuapp.com"
 
-submitQuery.addEventListener('click',function(){
+function handle_form_submission(){
+    console.warn('TEST');
+    alert('Submit button pressed');
+    return false; //do not submit the form
+ }
+
+function valid(){
+  var missing = "";
+  var isValid = true;
+  if (!(netid.checkValidity())) {
+      $('#net').css({ "background": '#FFFF00'});
+      missing +="NetID,";
+      isValid = false;
+    }
+  if (!(fst.checkValidity())) {
+      $('#first').css({ "background": '#FFFF00'});
+      missing +="First Name,";
+      isValid = false;
+  }
+   if (!(lst.checkValidity())) {
+        $('#last').css({ "background": '#FFFF00'});
+        missing +="Last Name,";
+        isValid = false;
+    }
+    if (!(mail.checkValidity())) {
+         $('#mail').css({ "background": '#FFFF00'});
+         missing +="Email,";
+         isValid = false;
+
+     }
+     if (!(grad.checkValidity())) {
+          $('#grad').css({ "background": '#FFFF00'});
+          missing +="Graduation Year,";
+          isValid = false;
+      }
+
+      if(!isValid){
+        alert("Missing:" + missing);
+        return false;
+      }
+  return true;
+}
+
+
+submitQuery.addEventListener ('click',function(){
   // Sending and receiving data in JSON format using POST method
 //
-json = {netid: netid.value,fname: fst.value,lname: lst.value,email:email.value,year:grads.value};
-
-$.ajax({
-  type: "POST",
-  crossDomain: true,
-  url: url+"/new_subscriber",
-  data: json,
-  success: function(jsondata){
-    console.log('success')
-  }
-});
 
 
-// $.post(url+"/new_subscriber", data)
-//                           .done(function( data ) {
-//                             alert( "Data Loaded: " + data );
-//                           });
-
-  // var xhr = new XMLHttpRequest();
-  // var url = "http://localhost:5000/new_subscriber";
-  // xhr.open("POST", url, true);
-  // xhr.setRequestHeader("Content-Type", "application/json");
-  // xhr.onreadystatechange = function () {
-  //     if (xhr.readyState === 4 && xhr.status === 200) {
-  //         var json = JSON.parse(xhr.responseText);
-  //         console.log(json.email + ", " + json.password);
-  //     }
-  // };
-  // var data = JSON.stringify({"netid": netid.value,
-  //                           "fname": fst.value,
-  //                           "lname": lst.value,
-  //                           "email": email.value,
-  //                           "year": grads.value,
-  //                           });
-  // xhr.send(data);
+  json = {netid: netid.value,fname: fst.value,lname: lst.value,email:email.value,year:grads.value};
+  if(valid()){
+    $.ajax({
+      type: "POST",
+      crossDomain: true,
+      url: url+"/new_subscriber",
+      data: json,
+      success: function(jsondata){
+        alert('success');
+        console.log('success');
+      }
+    });
+ }
 });
