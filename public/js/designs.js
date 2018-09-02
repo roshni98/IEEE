@@ -4,7 +4,7 @@ var lst=document.getElementById('last');
 var email=document.getElementById('mail');
 var grads=document.getElementById('grad');
 var submitQuery = document.querySelector('input[type="submit"][value="Submit"]');
-var unsubscribeQuery = document.querySelector('input[type="submit"][value="Unsubscribe"]');
+// var unsubscribeQuery = document.querySelector('input[type="submit"][value="Unsubscribe"]');
 
 //var url = "http://localhost:5000"
  var url = "https://emails-ieee.herokuapp.com"
