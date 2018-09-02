@@ -37,7 +37,7 @@ function valid(){
          isValid = false;
 
      }
-     if (!(grad.checkValidity())) {
+     if (!(grads.checkValidity())) {
           $('#grad').css({ "background": '#FFFF00'});
           missing +="Graduation Year,";
           isValid = false;
@@ -49,7 +49,16 @@ function valid(){
       }
   return true;
 }
+function reset(){
+  if(submit.onclick()){
+    netid.reset();
+    fst.reset();
+    lst.reset();
+    email.reset();
+    grads.reset();
+  }
 
+}
 
 submitQuery.addEventListener ('click',function(){
   // Sending and receiving data in JSON format using POST method
@@ -66,6 +75,7 @@ submitQuery.addEventListener ('click',function(){
       success: function(jsondata){
         alert('success');
         console.log('success');
+        reset();
       }
     });
  }
