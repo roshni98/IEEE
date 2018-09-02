@@ -142,7 +142,6 @@ express()
       var subscriber = [{
               'email': req.body.email,
               'name': req.body.fname,
-              'fields':{'graduating_year':year}
       }];
       console.log($campaign_id);
       $ML_Subscribers.setId($campaign_id).remove(subscriber,1,function (r){
