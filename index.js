@@ -115,4 +115,40 @@ express()
       });
 
   })
+  .post('/delete_subscriber', async (req, res) => {
+      res.header("Access-Control-Allow-Origin", "*");
+      var netid = "'"+req.body.netid+"'";
+      var fname = "'"+req.body.fname+"'";
+      var lname = "'"+req.body.lname+"'";
+      var email = "'"+req.body.email+"'";
+      var year = "'"+req.body.year+"'";
+      var timestamp = new Date().getTime();
+      console.log(netid)
+      pool.getConnection(function(err, conn) {
+        if (err) throw err; // not connected!
+        var sql = "DELETE FROM IEEE_Club_Members WHERE netid="+netid;
+        // Use the connection
+        conn.query(sql, function (error, results, fields) {
+          // When done with the connection, release it.
+          conn.release();
+
+        // Handle error after the release.
+        if (error) throw error;
+        console.log('1 record removed');
+          // Don't use the connection here, it has been returned to the pool.
+        });
+      });
+
+      var subscriber = [{
+              'email': req.body.email,
+              'name': req.body.fname,
+              'fields':{'graduating_year':year}
+      }];
+      console.log($campaign_id);
+      $ML_Subscribers.setId($campaign_id).remove(subscriber,1,function (r){
+        console.log(r);
+        res.status(200).send('success');
+      });
+
+  })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))

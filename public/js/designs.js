@@ -3,7 +3,9 @@ var fst= document.getElementById('first');
 var lst=document.getElementById('last');
 var email=document.getElementById('mail');
 var grads=document.getElementById('grad');
-var submitQuery = document.querySelector('input[type="submit"]');
+var submitQuery = document.querySelector('input[type="submit"][value="Submit"]');
+var unsubscribeQuery = document.querySelector('input[type="submit"][value="Unsubscribe"]');
+
 //var url = "http://localhost:5000"
  var url = "https://emails-ieee.herokuapp.com"
 
@@ -56,11 +58,11 @@ function reset(){
 
 }
 
+
+
 submitQuery.addEventListener ('click',function(){
   // Sending and receiving data in JSON format using POST method
 //
-
-
   json = {netid: netid.value,fname: fst.value,lname: lst.value,email:email.value,year:grads.value};
   if(valid()){
     $.ajax({
@@ -75,4 +77,27 @@ submitQuery.addEventListener ('click',function(){
       }
     });
  }
+});
+
+
+
+unsubscribeQuery.addEventListener ('click',function(){
+  // Sending and receiving data in JSON format using POST method
+//
+
+  json = {netid: netid.value,fname: fst.value,lname: lst.value,email:email.value,year:grads.value};
+  if(valid()){
+    $.ajax({
+      type: "POST",
+      crossDomain: true,
+      url: url+"/delete_subscriber",
+      data: json,
+      success: function(jsondata){
+        alert('success');
+        console.log('success');
+        reset();
+      }
+    });
+ }
+
 });
