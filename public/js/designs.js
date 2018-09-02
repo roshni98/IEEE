@@ -51,11 +51,7 @@ function valid(){
 }
 function reset(){
   console.log("clicked");
-    netid.reset();
-    fst.reset();
-    lst.reset();
-    email.reset();
-    grads.reset();
+  $('#myForm')[0].reset()
 
 
 }
