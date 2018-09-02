@@ -144,7 +144,7 @@ express()
               'name': req.body.fname,
       }];
       console.log($campaign_id);
-      $ML_Subscribers.setId($campaign_id).remove(subscriber,1,function (r){
+      $ML_Subscribers.unsubscribe(subscriber,1,function (r){
         console.log(r);
         res.status(200).send('success');
       });
