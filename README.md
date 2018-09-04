@@ -1,3 +1,8 @@
+#Objective
+
+To create a database where students can signup and can make it easier for signups to go straight to mailerlite
+ 
+
 # node-js-getting-started
 
 A barebones Node.js app using [Express 4](http://expressjs.com/).
