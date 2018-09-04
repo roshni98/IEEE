@@ -1,9 +1,7 @@
 #Objective
 
-To create database where students can signup and can make it easier for signups to go straight to mailerlite
-
-
-
+To create a database where students can signup and can make it easier for signups to go straight to mailerlite
+ 
 
 # node-js-getting-started
 
