@@ -34,8 +34,18 @@
         width: 100%;
         clear: both;
     }
-body{
-  background-image:url("/Users/roshnishah/Desktop/RutgersLogoWhiteHighlightTransparentShadowV2.png");
-  height: 50%;
+    .back{
+      align-content: center;
+    }
+    body{
+      background-color: lightgray;
+    }
+.back img{
+  /* background-image:url("https://github.com/roshni98/IEEE/blob/master/public/RutgersLogoWhiteHighlightTransparentShadowV2.png?raw=true"); */
+  height: 80%;
+  width:75%;
+  display:block;
+  align-self: center;
+  background-size: cover;
   background-position: center;
 }
