@@ -35,5 +35,7 @@
         clear: both;
     }
 body{
-  background-color: red;
+  background-image:url("file:///Users/roshnishah/Desktop/RutgersLogoWhiteHighlightTransparentShadowV2.png");
+  height: auto;
+  background-position: center;
 }
